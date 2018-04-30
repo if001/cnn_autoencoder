@@ -1,20 +1,23 @@
 
-from model.mnist import Mnist
+
 from preprocessing.preprocessing import PreProcessing
 from model_exec.learning import Learning
 from model_exec.predict import Predict
 
+from model.simple_autoencoder import SimpelAutoencoder
+from model.config import Config
+
+
 def main():
     train_x, train_y = PreProcessing().make_train_data()
-    mnist_model = Mnist().make_model()
-    hist = Learning.run(mnist_model, train_x, train_y)
-    Mnist.save_model(mnist_model)
 
-    test_x, test_y = PreProcessing().make_test_data()
-    score = Predict.run(mnist_model, test_x, test_y)
+    encoder, autoencoder = SimpelAutoencoder.make_model()
+    hist = Learning.run(autoencoder, train_x, train_y)
 
-    print('Test loss:', score[0])
-    print('Test accuracy:', score[1])
+    # SimpelAutoencoder.save_model(encoder ,save_fname)
+    # SimpelAutoencoder.save_model(autoencoder ,save_fname)
+
+
 
 if __name__ == '__main__':
    main()
