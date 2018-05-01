@@ -8,6 +8,7 @@ from . import config
 import keras
 from keras.datasets    import mnist
 from PIL import Image
+import numpy as np
 
 
 num_classes = 10
@@ -27,7 +28,8 @@ class PreProcessing(abc_preprocessing.ABCPreProcessing):
             image = image.reshape(1, image.shape[0] * image.shape[1] * image.shape[2]).astype("float32")[0]
             # 出来上がった配列をimage_listに追加。
             image_list.append(image / 255.)
-
+        image_list = np.array(image_list)
+        print(image_list.shape())
         return image_list, image_list
 
     @classmethod
