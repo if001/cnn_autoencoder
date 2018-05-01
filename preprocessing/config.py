@@ -6,5 +6,5 @@ class Config():
     up_dir = run_dir_path.replace(last,"")
     last = run_dir_path.split("/")[-1]
     up_dir = run_dir_path.replace(last,"")
-    image_dir_path = up_dir + "aozora_data/files/tmp.txt"
+    image_dir_path = up_dir + "string2image/image"
 
