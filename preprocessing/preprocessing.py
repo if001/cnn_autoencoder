@@ -9,7 +9,7 @@ import keras
 from keras.datasets    import mnist
 from PIL import Image
 import numpy as np
-
+import os
 
 num_classes = 10
 
