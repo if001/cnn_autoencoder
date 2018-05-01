@@ -12,8 +12,8 @@ def main():
     encoder, autoencoder = SimpelAutoencoder.make_model()
     hist = Learning.run(autoencoder, train_x, train_y)
 
-    SimpelAutoencoder.save_model(encoder ,save_fname)
-    SimpelAutoencoder.save_model(autoencoder ,save_fname)
+    SimpelAutoencoder.save_model(encoder ,"encode.hdf5")
+    SimpelAutoencoder.save_model(autoencoder ,"autoencoder.hdf5")
 
 if __name__ == '__main__':
    main()

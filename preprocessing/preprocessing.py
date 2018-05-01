@@ -10,22 +10,26 @@ from keras.datasets    import mnist
 from PIL import Image
 import numpy as np
 import os
-
+import random as rand
 
 class PreProcessing(abc_preprocessing.ABCPreProcessing):
     @classmethod
     def make_train_data(cls, batch_size):
         image_list = []
         file_dir = config.Config.image_dir_path
-        for file in os.listdir(file_dir):
-            if (file.split(".")[-1] == "png") :
-                filepath = file_dir + "/" + file
+        files = os.listdir(file_dir)
+
+        while(True):
+            idx = rand.randint(0, len(files)-1)
+            if (files[idx].split(".")[-1] == "png") :
+                filepath = file_dir + "/" + files[idx]
                 print(filepath)
                 img = Image.open(filepath)
                 img = img.convert("RGB")
                 img = img.resize((28, 28))
                 img = np.array(img)
                 image_list.append(img / 255.)
+            if len(image_list) == batch_size: break
 
         image_list = np.array(image_list)
         print(image_list.shape)

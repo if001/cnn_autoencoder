@@ -33,14 +33,14 @@ class SimpelAutoencoder(abc_model.ABCModel):
 
     @classmethod
     def save_model(cls, model, fname):
-        print("save"+  config.Config.run_dir_path + fname)
-        model.save(config.Config.run_dir_path + fname)
+        print("save"+  config.Config.run_dir_path + "/" + fname)
+        model.save(config.Config.run_dir_path + "/" + fname)
 
     @classmethod
     def load_model(cls):
-        print("load "+  config.Config.run_dir_path + fname)
+        print("load "+  config.Config.run_dir_path + "/" + fname)
         from keras.models import load_model
-        return load_model(config.Config.run_dir_path + fname)
+        return load_model(config.Config.run_dir_path + "/" + fname)
 
 
 
