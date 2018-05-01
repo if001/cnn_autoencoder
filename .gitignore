@@ -1,2 +1,7 @@
+model/__pycache__/*
+model_exec/__pycache__/*
+preprocessing/__pycache__/*
+
 model/weight/*
 !.gitkeep
+
