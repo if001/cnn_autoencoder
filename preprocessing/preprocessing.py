@@ -36,9 +36,27 @@ class PreProcessing(abc_preprocessing.ABCPreProcessing):
         return image_list, image_list
 
     @classmethod
+    def make_feature_data(cls):
+        image_label_list = []
+        file_dir = config.Config.image_dir_path
+
+        for fname in os.listdir(file_dir):
+            if (fname.split(".")[-1] == "png") :
+                filepath = file_dir + "/" + fname
+                print(filepath)
+                img = Image.open(filepath)
+                img = img.convert("RGB")
+                img = img.resize((28, 28))
+                img = np.array(img)
+                image_label_list.append([fname.split(".")[0], img / 255.])
+
+        return image_label_list
+
+    @classmethod
     def make_test_data(cls):
         pass
 
+    
 def main():
     pass
 

@@ -1,19 +1,16 @@
-
-from model.mnist import Mnist
 from preprocessing.preprocessing import PreProcessing
 from model_exec.learning import Learning
-from model_exec.predict import Predict
+
+from model_exec.config import Config
+from model.simple_autoencoder import SimpleAutoencoder
 
 def main():
-    train_x, train_y = PreProcessing().make_train_data()
-    mnist_model = Mnist().load_model()
-    hist = Learning.run(mnist_model, train_x, train_y)
+    train_x, train_y = PreProcessing().make_train_data(Config.batch_size)
+    autoencoder = SimpleAutoencoder.load_model("autoencoder.hdf5")
 
-    test_x, test_y = PreProcessing().make_test_data()
-    score = Predict.run(mnist_model, test_x, test_y)
+    hist = Learning.run(autoencoder, train_x, train_y)
 
-    print('Test loss:', score[0])
-    print('Test accuracy:', score[1])
+    SimpleAutoencoder.save_model(autoencoder ,"autoencoder.hdf5")
 
 if __name__ == '__main__':
    main()
