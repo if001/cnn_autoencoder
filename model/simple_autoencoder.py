@@ -38,9 +38,9 @@ class SimpelAutoencoder(abc_model.ABCModel):
 
     @classmethod
     def load_model(cls):
-        print("load "+  config.Config.run_dir_path + "/" + fname)
+        print("load "+  config.Config.run_dir_path + "/weight/" + fname)
         from keras.models import load_model
-        return load_model(config.Config.run_dir_path + "/" + fname)
+        return load_model(config.Config.run_dir_path + "/weight/" + fname)
 
 
 
