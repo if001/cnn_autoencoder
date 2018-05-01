@@ -9,7 +9,6 @@ from model.config import Config
 
 def main():
     train_x, train_y = PreProcessing().make_train_data()
-
     encoder, autoencoder = SimpelAutoencoder.make_model()
     hist = Learning.run(autoencoder, train_x, train_y)
 
