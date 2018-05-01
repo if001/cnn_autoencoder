@@ -1,5 +1,6 @@
 # from abc_preprocessing import ABCPreProcessing
 from . import abc_preprocessing
+from . import config
 
 # import sys
 # sys.path.append("../")
@@ -15,7 +16,7 @@ class PreProcessing(abc_preprocessing.ABCPreProcessing):
     @classmethod
     def make_train_data(cls):
         image_list = []
-        file_dir = ""
+        file_dir = config.Config.image_dir_path
         for file in os.listdir(file_dir):
             filepath = file_dir + "/" + file
             image = np.array(Image.open(filepath).resize((25, 25)))
