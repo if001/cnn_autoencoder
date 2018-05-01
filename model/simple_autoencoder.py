@@ -43,5 +43,3 @@ class SimpelAutoencoder(abc_model.ABCModel):
         return load_model(config.Config.run_dir_path + "/weight/" + fname)
 
 
-
-

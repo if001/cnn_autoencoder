@@ -4,8 +4,7 @@ from model_exec.learning import Learning
 from model_exec.predict import Predict
 
 from model.simple_autoencoder import SimpelAutoencoder
-from model.config import Config
-
+from model_exec.config import Config
 
 def main():
     train_x, train_y = PreProcessing().make_train_data(Config.batch_size)
