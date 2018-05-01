@@ -8,7 +8,7 @@ from . import config
 class SimpelAutoencoder(abc_model.ABCModel):
     @classmethod
     def make_model(cls):
-        input_img = Input(shape=(28, 28, 1))
+        input_img = Input(shape=(28, 28, 3))
 
         x = Conv2D(16, (3, 3), activation='relu', padding='same')(input_img)
         x = MaxPooling2D((2, 2), padding='same')(x)
@@ -16,7 +16,7 @@ class SimpelAutoencoder(abc_model.ABCModel):
         x = MaxPooling2D((2, 2), padding='same')(x)
         x = Conv2D(8, (3, 3), activation='relu', padding='same')(x)
         encoded = MaxPooling2D((2, 2), padding='same')(x)
-        encoder = Model(input_img, encoder)
+        encoder = Model(input_img, encoded)
 
         x = Conv2D(8, (3, 3), activation='relu', padding='same')(encoded)
         x = UpSampling2D((2, 2))(x)
@@ -24,11 +24,11 @@ class SimpelAutoencoder(abc_model.ABCModel):
         x = UpSampling2D((2, 2))(x)
         x = Conv2D(16, (3, 3), activation='relu')(x)
         x = UpSampling2D((2, 2))(x)
-        decoded = Conv2D(1, (3, 3), activation='sigmoid', padding='same')(x)
-
+        decoded = Conv2D(3, (3, 3), activation='sigmoid', padding='same')(x)
 
         autoencoder = Model(input_img, decoded)
         autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy')
+        autoencoder.summary()
         return encoder, autoencoder
 
     @classmethod
