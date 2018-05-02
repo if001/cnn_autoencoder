@@ -1,4 +1,4 @@
 class Config():
-    batch_size=100
-    epochs=10
+    batch_size=516
+    epochs=20
     verbose=1
