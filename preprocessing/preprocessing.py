@@ -23,7 +23,6 @@ class PreProcessing(abc_preprocessing.ABCPreProcessing):
             idx = rand.randint(0, len(files)-1)
             if (files[idx].split(".")[-1] == "png") :
                 filepath = file_dir + "/" + files[idx]
-                print(filepath)
                 img = Image.open(filepath)
                 img = img.convert("RGB")
                 img = img.resize((28, 28))
@@ -32,7 +31,6 @@ class PreProcessing(abc_preprocessing.ABCPreProcessing):
             if len(image_list) == batch_size: break
 
         image_list = np.array(image_list)
-        print(image_list.shape)
         return image_list, image_list
 
     @classmethod
@@ -43,7 +41,6 @@ class PreProcessing(abc_preprocessing.ABCPreProcessing):
         for fname in os.listdir(file_dir):
             if (fname.split(".")[-1] == "png") :
                 filepath = file_dir + "/" + fname
-                print(filepath)
                 img = Image.open(filepath)
                 img = img.convert("RGB")
                 img = img.resize((28, 28))
