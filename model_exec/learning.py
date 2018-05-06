@@ -9,7 +9,7 @@ class Learning():
     @classmethod
     def run(cls, model, x_train, y_train, x_test, y_test):
         history = model.fit(x_train, y_train,
-                    batch_size       = config.Config.batch_size,
+                    # batch_size       = config.Config.batch_size,
                     epochs           = config.Config.epochs,
                     verbose          = config.Config.verbose,
                     validation_data  = (x_test, y_test))
@@ -18,7 +18,7 @@ class Learning():
     @classmethod
     def run(cls, model, x_train, y_train):
         history = model.fit(x_train, y_train,
-                    batch_size = config.Config.batch_size,
+                    # batch_size = config.Config.batch_size,
                     epochs     = config.Config.epochs)
         return history
 
