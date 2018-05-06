@@ -18,7 +18,7 @@ def main():
         print("step: ",i)
         train_x, train_y = PreProcessing().make_train_data(Config.batch_size)
         test_x, test_y = PreProcessing().make_train_data(Config.test_size)
-        hist = Learning.run(autoencoder, train_x, train_y, test_x, test_y)
+        hist = Learning.run_with_test(autoencoder, train_x, train_y, test_x, test_y)
         if i % 50 == 0:
             SimpleAutoencoder.save_model(autoencoder ,"autoencoder.hdf5")
 

@@ -7,7 +7,7 @@ class Learning():
     doc
     '''
     @classmethod
-    def run(cls, model, x_train, y_train, x_test, y_test):
+    def run_with_test(cls, model, x_train, y_train, x_test, y_test):
         history = model.fit(x_train, y_train,
                     # batch_size       = config.Config.batch_size,
                     epochs           = config.Config.epochs,
