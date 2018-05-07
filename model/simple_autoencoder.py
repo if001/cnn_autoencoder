@@ -26,7 +26,8 @@ class SimpleAutoencoder(abc_model.ABCModel):
         decoded = Conv2D(3, (3, 3), activation='sigmoid', padding='same')(x)
 
         autoencoder = Model(input_img, decoded)
-        autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy')
+        autoencoder.compile(optimizer=config.Config.optimizer,
+                            loss=config.Config.loss)
         autoencoder.summary()
         return autoencoder
 
@@ -48,13 +49,11 @@ class SimpleAutoencoder(abc_model.ABCModel):
 
     @classmethod
     def save_model(cls, model, fname):
-        print("save"+  config.Config.run_dir_path + "/weight/" + fname)
+        print("save" + config.Config.run_dir_path + "/weight/" + fname)
         model.save(config.Config.run_dir_path + "/weight/" + fname)
 
     @classmethod
     def load_model(cls, fname):
-        print("load "+  config.Config.run_dir_path + "/weight/" + fname)
+        print("load " + config.Config.run_dir_path + "/weight/" + fname)
         from keras.models import load_model
         return load_model(config.Config.run_dir_path + "/weight/" + fname)
-
-
