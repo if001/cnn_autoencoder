@@ -5,10 +5,9 @@ from model_exec.learning import Learning
 from model.simple_autoencoder import SimpleAutoencoder
 from model_exec.config import Config
 
-# date_size = 60000
-# test_size = 10000
-date_size = 60000
+date_size = 40000
 test_size = 10000
+
 
 
 def main():

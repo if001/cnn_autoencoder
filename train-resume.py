@@ -6,7 +6,7 @@ from model.simple_autoencoder import SimpleAutoencoder
 
 import sys
 
-date_size = 20000
+date_size = 40000
 test_size = 10000
 
 
