@@ -1,5 +1,5 @@
 class Config():
-    batch_size=516
-    test_size=128
-    epochs=400
-    verbose=1
+    batch_size = 60000
+    test_size = 10000
+    epochs = 20
+    verbose = 1
