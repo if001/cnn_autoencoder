@@ -1,11 +1,25 @@
 from keras.layers import Input, Dense, Conv2D, MaxPooling2D, UpSampling2D
 from keras.models import Model
 from keras import backend as K
+import keras
 from . import abc_model
 from . import config
 
 
 class SimpleAutoencoder(abc_model.ABCModel):
+    @classmethod
+    def set_callbacks(cls, fname):
+        # fname = 'weights.{epoch:02d}-{loss:.2f}-{acc:.2f}-{val_loss:.2f}-{val_acc:.2f}.hdf5'
+        fpath = config.Config.run_dir_path + "/weight/" + fname
+        callbacks = []
+        callbacks.append(keras.callbacks.ModelCheckpoint(
+            filepath=fpath, monitor='val_loss', verbose=1, save_best_only=True, mode='auto'))
+
+        callbacks.append(keras.callbacks.EarlyStopping(
+            monitor='val_loss', patience=0, verbose=1, mode='auto'))
+
+        return callbacks
+
     @classmethod
     def make_model(cls):
         input_img = Input(shape=(28, 28, 3))
