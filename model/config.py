@@ -1,6 +1,6 @@
-from keras.optimizers import RMSprop
+from keras.optimizers import RMSprop, Adam
 import os
-import keras.optimizers.Adam
+
 
 class Config():
     run_dir_path = os.path.dirname(os.path.abspath(__file__))
