@@ -6,7 +6,7 @@ from model.simple_autoencoder import SimpleAutoencoder
 
 import sys
 
-date_size = 40000
+date_size = 60000
 test_size = 10000
 
 
@@ -14,7 +14,7 @@ def main():
     train_x, train_y = PreProcessing().make_train_data(Config.batch_size)
     cbs = SimpleAutoencoder.set_callbacks("autoencoder.hdf5")
     autoencoder = SimpleAutoencoder.load_model("autoencoder.hdf5")
-    
+
     train_x, train_y = PreProcessing().make_train_data(date_size)
     test_x, test_y = PreProcessing().make_train_data(test_size)
     hist = Learning.run_with_test(
