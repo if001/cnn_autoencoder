@@ -9,5 +9,4 @@ class Config():
     loss = 'mean_squared_error'
     optimizer = 'adadelta'
     optimizer = 'adam'
-    optimizer = Adam(lr=2e-4, beta_1=0.5)
     metrics = 'accuracy'
