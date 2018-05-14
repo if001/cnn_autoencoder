@@ -40,13 +40,12 @@ def concat_img(img_list):
 def char2img(inp):
     img_filepath = "../string2image/image"
     files = os.listdir(img_filepath)
-    fname = inp + "_0.png"
-
-    if fname not in files:
+    byte_fname = inp.encode("UTF-8").hex() + "_0.png"
+    if byte_fname not in files:
         print("create " + inp)
         s2i.string2image(inp)
 
-    img = Image.open(img_filepath + "/" + fname)
+    img = Image.open(img_filepath + "/" + byte_fname)
     img = img.convert("RGB")
     img = img.resize((28, 28))
     img = np.array(img)
