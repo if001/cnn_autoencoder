@@ -6,7 +6,7 @@ import sys
 import os
 
 sys.path.append("../../")
-from string2image import string2image as s2i
+from string2image import str2img
 
 
 def get_concat_h(im1, im2):
@@ -43,7 +43,7 @@ def char2img(inp):
     byte_fname = inp.encode("UTF-8").hex() + "_0.png"
     if byte_fname not in files:
         print("create " + inp)
-        s2i.string2image(inp)
+        str2img.string2image(inp)
 
     img = Image.open(img_filepath + "/" + byte_fname)
     img = img.convert("RGB")
