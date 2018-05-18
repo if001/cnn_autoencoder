@@ -62,6 +62,22 @@ class SimpleAutoencoder(abc_model.ABCModel):
         return encoder
 
     @classmethod
+    def make_decoder_model(cls, autoencoder):
+        decode = autoencoder.layers[7:]
+        input_img = Input(shape=(4, 4, 8))
+        x = decode[0](input_img)
+        x = decode[1](x)
+        x = decode[2](x)
+        x = decode[3](x)
+        x = decode[4](x)
+        x = decode[5](x)
+        decoded = decode[6](x)
+
+        decoder = Model(input_img, decoded)
+        decoder.summary()
+        return decoder
+
+    @classmethod
     def save_model(cls, model, fname):
         print("save" + config.Config.run_dir_path + "/weight/" + fname)
         model.save(config.Config.run_dir_path + "/weight/" + fname)

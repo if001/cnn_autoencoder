@@ -71,7 +71,7 @@ def main():
     from model.simple_autoencoder import SimpleAutoencoder
 
     image_label_list = PreProcessing().make_feature_data()
-    autoencoder = SimpleAutoencoder.load_model("autoencoder.hdf5")
+    autoencoder = SimpleAutoencoder.load_model("cnn_model.hdf5")
     encoder = SimpleAutoencoder.make_encoder_model(autoencoder)
 
     for _ in range(2):
