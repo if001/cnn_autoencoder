@@ -38,7 +38,11 @@ def concat_img(img_list):
 
 
 def char2img(inp):
-    img_filepath = "../string2image/image"
+    run_dir_path = os.path.dirname(os.path.abspath(__file__))
+    last1 = run_dir_path.split("/")[-1]
+    up_one_dir = run_dir_path.replace(last1, "")
+
+    img_filepath = up_one_dir + "string2image/image"
     files = os.listdir(img_filepath)
     byte_fname = inp.encode("UTF-8").hex() + "_0.png"
     if byte_fname not in files:
