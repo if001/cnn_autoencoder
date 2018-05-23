@@ -7,3 +7,5 @@ preprocessing/__pycache__/*
 model/weight/*
 !.gitkeep
 
+model/weight/tflog
+!model/weight/tflog/.gitkeep
